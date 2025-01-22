@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url(https://thumbs.dreamstime.com/z/stylish-office-table-desk-workspace-laptop-diary-succulent-white-background-flat-lay-top-view-copy-space-tex-text-127757005.jpg);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 10px 20px;
+        }
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+        .navbar .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        .navbar .logo .name {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .navbar a {
+            color: black;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+        
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        
+        ul li {
+            margin-right: 20px;
+        }
+        
+        ul li a {
+            color: #000;
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+        
+        ul li a:hover {
+            background-color: #b4b4b4;
+            border-radius: 5px;
+        }
+        
+        .container {
+            margin-top: 60px;
+            padding: 20px;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #333333;
+            text-align: center;
+        }
+        
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        input[type=text], input[type=email], input[type=password] {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background-color: #12cf87;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #bb8613;
+        }
+        
+        p {
+            margin-top: 10px;
+            text-align: center;
+        }
+        
+        p a {
+            color: blue;
+            text-decoration: none;
+        }
+        
+        p a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .footer a {
+            color: #0066cc;
+            text-decoration: none;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="/static/sitare_university.png" alt="Library Logo">
+            <div class="name">Sitare University</div>
+        </div>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/userlogin">Login</a></li>
+            <li><a href="/adminlogin">Admin Login</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <h1>Sign Up</h1>
+        <form id="form" method="post">
+            <label>Full Name:</label><input type="text" name="fullname" placeholder="Enter here" required><br>
+            <label>Email:</label><input type="email" name="email" placeholder="Enter su-xxxxx@sitare.org" required><br>
+            <label>Phone Number:</label><input type="text" name="phone_number" placeholder="Enter here"><br>
+            <label>Address:</label><input type="text" name="address" placeholder="Enter here"><br>
+            <label>Username:</label><input type="text" name="username" required placeholder="Enter here"><br>
+            <label>Password:</label><input type="password" name="password" placeholder="Enter here" required><br>
+            <button type="submit">Sign Up</button>
+            <p>Already have an account? <a href="/userlogin">Login</a>
+            </p>
+        </form>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 Sitare University. All rights reserved.</p>
+        <p><a href="/privacy-policy">Privacy Policy</a> | <a href="/terms-of-service">Terms of Service</a></p>
+    </div>
+</body>
+</html>

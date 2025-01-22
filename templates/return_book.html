@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Return Book</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Reset some default styles */
+        body, h2, label, input, button, form, ul, nav, footer, a {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(https://images.pexels.com/photos/7034395/pexels-photo-7034395.jpeg?auto=compress&cs=tinysrgb&w=600);
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 10px 20px;
+            border-bottom: 5px solid #d18a05;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .navbar .logo .name {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+        }
+
+        ul li {
+            margin-right: 20px;
+        }
+
+        ul li a {
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        ul li a:hover {
+            background-color: #b4b4b4;
+            border-radius: 5px;
+        }
+
+        /* Main content styles */
+        form {
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 600px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #043646;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            margin-top: auto;
+        }
+        .footer a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="/static/sitare_university.png" alt="Library Logo">
+            <div class="name">Sitare University</div>
+        </div>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/user">Dashboard</a></li>
+            <li><a href="/user_profile">Profile</a></li>
+            <li><a href="/userlogout">Logout</a></li>
+        </ul>
+    </div>
+
+    <form method="POST" action="{{ url_for('return_book') }}">
+        <h2>Return Book</h2>
+        <form action="/return_book" method="POST"> 
+            <label for="isbn">Book ID:</label>
+            <input type="text" id="isbn" name="isbn" required>
+            <button type="submit">Return Book</button>
+        </form>
+    </form>
+    <div class="footer">
+        <p>&copy; 2024 Sitare University. All rights reserved.</p>
+        <p><a href="/privacy-policy">Privacy Policy</a> | <a href="/terms-of-service">Terms of Service</a></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Book</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+            background-image: url('https://images.pexels.com/photos/7034395/pexels-photo-7034395.jpeg?auto=compress&cs=tinysrgb&w=600');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 10px 20px;
+            border-bottom: 5px solid #d18a05;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .navbar .logo .name {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar a {
+            color: black;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+        }
+
+        ul li {
+            margin-right: 20px;
+        }
+
+        ul li a:hover {
+            background-color: #b4b4b4;
+            border-radius: 5px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            background: linear-gradient(to bottom, white, rgb(187, 187, 196));
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #043646;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        form input {
+            margin-top: 5px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        form button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: #0056b3;
+        }
+
+        .footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        .footer a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="/static/sitare_university.png" alt="Library Logo">
+            <div class="name">Sitare University</div>
+        </div>
+        <ul>
+            <li><a href="{{ url_for('landing') }}">Home</a></li>
+            <li><a href="/books">Books</a></li>
+        </ul>
+    </div>
+    
+    <div class="container">
+        <h1>Edit Book</h1>
+        <form method="post">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" value="{{ book[1] }}" required>
+            
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" value="{{ book[2] }}" required>
+            
+            <label for="isbn">ISBN:</label>
+            <input type="text" id="isbn" name="isbn" value="{{ book[3] }}" required>
+            
+            <label for="publisher">Publisher:</label>
+            <input type="text" id="publisher" name="publisher" value="{{ book[4] }}" required>
+            
+            <label for="copies">Copies:</label>
+            <input type="number" id="copies" name="copies" value= "{{ book[5] }}" required>
+        
+            
+            <button type="submit">Update Book</button>
+        </form>
+    </div>
+    
+    <footer class="footer">
+        <p>&copy; 2024 Sitare University. All rights reserved.</p>
+        <p><a href="/privacy-policy">Privacy Policy</a> | <a href="/terms-of-service">Terms of Service</a></p>
+    </footer>
+</body>
+</html>

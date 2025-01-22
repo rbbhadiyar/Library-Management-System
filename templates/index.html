@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to our library</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            color: #000;
+            min-height: 100vh; /* Ensure the body covers the full viewport height */
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, white, rgb(187, 187, 196));
+            padding: 10px 20px;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .navbar .logo .name {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar a {
+            color: black;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+
+        .bottom-container {
+            background: linear-gradient(to bottom, rgb(217, 217, 227), white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        h1, h2 {
+            margin-bottom: 20px;
+        }
+
+        .bottom-container a {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background-color: #cc4820;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .bottom-container table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        thead {
+            background-color: #2b9cbe;
+            color: white;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            margin-top: auto; /* Push footer to the bottom */
+        }
+
+        .footer a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        button {
+        background-color:  #cc4820;
+        color: white;
+        font-size: 20px;
+        border: none;
+        border-radius: 4px  ;
+        padding: 10px 15px;
+        cursor: pointer;
+        }
+    
+        input {
+        font-size: 20px;
+        padding: 5px;
+        margin-right: 10px;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="/static/sitare_university.png" alt="Library Logo">
+            <div class="name">Sitare University</div>
+        </div>
+        <a href="/">Home</a>
+        <a href="/issue_requests">Issue Requests</a>
+        <a href="/adminlogout">Logout</a>
+        <form action="{{ url_for('adminsearch_books') }}" method="get">
+            <input type="text" name="query" placeholder="Search for books...">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <div class="bottom-container">
+        <h1>Welcome to our Library Book Store</h1>
+        <a href="{{ url_for('add_book') }}">Add a New Book</a>
+
+        <h2>Book List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>SNo.</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>ISBN</th>
+                    <th>Publisher</th>
+                    <th>Copies</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                <tr>
+                    <td>{{ book[0] }}</td>
+                    <td>{{ book[1] }}</td>
+                    <td>{{ book[2] }}</td>
+                    <td>{{ book[3] }}</td>
+                    <td>{{ book[4] }}</td>
+                    <td>{{ book[5] }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_book', isbn=book[3]) }}">Edit</a>
+
+                        <form action="{{ url_for('delete_book', isbn=book[3]) }}" method="POST">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                        
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Sitare University. All rights reserved.</p>
+        <p><a href="/privacy-policy">Privacy Policy</a> | <a href="/terms-of-service">Terms of Service</a></p>
+    </div>
+</body>
+</html>
+
+
+
+
+

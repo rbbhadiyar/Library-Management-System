@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Book</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+            background-image: url('https://images.pexels.com/photos/7034395/pexels-photo-7034395.jpeg?auto=compress&cs=tinysrgb&w=600');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 10px 20px;
+        }
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+        .navbar .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        .navbar .logo .name {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .navbar a {
+            color: black;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+        }
+        ul li {
+            margin-right: 20px;
+        }
+        ul li a:hover {
+            background-color: #b4b4b4;
+            border-radius: 5px;
+        }
+        .bottom-container {
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 50%;
+            margin: 40px auto;
+            text-align: center;
+            background: linear-gradient(to bottom, white, rgb(187, 187, 196));
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .footer a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="/static/sitare_university.png" alt="Library Logo">
+            <div class="name">Sitare University</div>
+        </div>
+        <ul>
+            <li><a href="{{ url_for('landing') }}">Home</a></li>
+            <li><a href="/index">Library</a></li>
+            <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+            <li><a href="{{ url_for('userlogin') }}">User Login</a></li>
+            <li><a href="{{ url_for('adminlogin') }}">Admin Login</a></li>
+        </ul>
+    </div>
+    
+    <div class="bottom-container">
+        <h1>Add a New Book</h1>
+        <form method="POST" action="{{ url_for('add_book') }}">
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author" required>
+            </div>
+            <div class="form-group">
+                <label for="isbn">ISBN:</label>
+                <input type="text" id="isbn" name="isbn" required>
+            </div>
+            <div class="form-group">
+                <label for="publisher">Publisher:</label>
+                <input type="text" id="publisher" name="publisher" required>
+            </div>
+            <div class="form-group">
+                <label for="copies">Copies:</label>
+                <input type="number" id="copies" name="copies" required>
+            </div>
+            <button type="submit">Add Book</button>
+        </form>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Sitare University. All rights reserved.</p>
+        <p><a href="/privacy-policy">Privacy Policy</a> | <a href="/terms-of-service">Terms of Service</a></p>
+    </div>
+</body>
+</html>

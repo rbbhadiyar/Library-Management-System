@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue Requests</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> <!-- Ensure the path is correct -->
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/issue_requests">Issue Requests</a>
+            <a href="/adminlogout">Logout</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Issue Requests</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>ISBN</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for request in requests %}
+                <tr>
+                    <td>{{ request[0] }}</td> <!-- Ensure this corresponds to request_id -->
+                    <td>{{ request[1] }}</td>
+                    <td>{{ request[2] }}</td>
+                    <td>{{ request[3] }}</td>
+                    <td>{{ request[4] }}</td>
+                    <td>
+                        <!-- Issue Book Form -->
+                        <form action="{{ url_for('issue_book', request_id=request[0]) }}" method="POST">
+                            <button type="submit" class="btn btn-primary">Issue Book</button>
+                        </form>
+                        <!-- Decline Request Form -->
+                        <form action="{{ url_for('decline_request', request_id=request[0]) }}" method="POST">
+                            <button type="submit" class="btn btn-danger">Decline</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <p>&copy; 2024 Library Management System</p>
+    </footer>
+</body>
+</html>

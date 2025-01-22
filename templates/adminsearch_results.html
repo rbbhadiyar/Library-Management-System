@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+</head>
+<style>
+    /* General Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(https://images.pexels.com/photos/7034395/pexels-photo-7034395.jpeg?auto=compress&cs=tinysrgb&w=600);
+}
+
+/* Header Styles */
+h1 {
+    text-align: center;
+    color: #007bff;
+    margin-top: 20px;
+}
+
+/* List Styles */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 800px;
+}
+
+li {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+strong {
+    color: #333;
+}
+
+/* Links Styles */
+a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* No Results Message */
+p {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+}
+
+/* Button Styles */
+.button-container {
+    text-align: center;
+    margin: 20px auto;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+</style>
+<body>
+    <h1>Search Results for "{{ query }}"</h1>
+    
+    {% if books %}
+        <ul>
+            {% for book in books %}
+                <li>
+                    <strong>Title:</strong> {{ book[1] }}<br>
+                    <strong>Author:</strong> {{ book[2] }}<br>
+                    <strong>ISBN:</strong> {{ book[3] }}<br>
+                    <strong>Publisher:</strong> {{ book[4] }}<br>
+                    <strong>Copies:</strong> {{ book[5] }}<br>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No books found matching your search criteria.</p>
+    {% endif %}
+    
+    <div class="button-container">
+        <a href="{{ url_for('index') }}" class="button">Back to library</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue Book</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Reset some default styles */
+        body, h2, p, ul {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(https://images.pexels.com/photos/7034395/pexels-photo-7034395.jpeg?auto=compress&cs=tinysrgb&w=600);
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 10px 20px;
+            border-bottom: 5px solid #d18a05;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .navbar .logo .name {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+        }
+
+        ul li {
+            margin-right: 20px;
+        }
+
+        ul li a {
+            color: black;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+
+        ul li a:hover {
+            background-color: #b4b4b4;
+            border-radius: 5px;
+        }
+
+        /* Main content styles */
+        .container {
+            flex: 1;
+            padding: 40px; /* Doubled the padding */
+            max-width: 1200px; /* Doubled the width */
+            margin: 20px auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #043646;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .btn-primary {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer styles */
+        .footer {
+            background-color: #000000;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: auto;
+            width: 100%;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        .footer a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .footer a:hover {   
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="/static/sitare_university.png" alt="Library Logo">
+            <div class="name">Sitare University</div>
+        </div>
+        <ul>
+            <li><a href="{{ url_for('landing') }}">Home</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h2>Issue Book</h2>
+        <form action="{{ url_for('issue_book') }}" method="POST">
+            <div class="form-group">
+                <label for="book_id">Book ID:</label>
+                <input type="text" id="book_id" name="book_id" required>
+            </div>
+            <div class="form-group">
+                <label for="book_title">Book Title:</label>
+                <input type="text" id="book_title" name="book_title" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <button type="submit" class="btn-primary">Issue Book</button>
+        </form>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Sitare University. All rights reserved.</p>
+        <p><a href="/privacy-policy">Privacy Policy</a> | <a href="/terms-of-service">Terms of Service</a></p>
+    </footer>
+</body>
+</html>
